@@ -4,6 +4,21 @@ Tất cả thay đổi đáng chú ý của dự án WinBroom được ghi lại
 
 ---
 
+## [1.1.0] — 2026-09-22
+
+### ✨ Thêm mới
+- **`TatChrome.bat`** — Tắt toàn bộ tiến trình Chrome chạy ngầm bằng `taskkill`, hiển thị số tiến trình đã kill
+
+### 🗂️ Cấu trúc
+- Tái tổ chức dự án: di chuyển `*.py` và `*.ps1` vào thư mục `src/`
+- Di chuyển tài liệu `TOOLS.md` và `CHANGELOG.md` vào thư mục `docs/`
+- Cập nhật tất cả file `.bat` để trỏ đúng đường dẫn mới vào `src\`
+
+### 🐛 Sửa lỗi
+- `NenDockerVHDX.ps1`: Sửa hàm `Write-Color` crash khi truyền chuỗi màu rỗng
+
+---
+
 ## [1.0.0] — 2026-09-22
 
 ### ✨ Ra mắt lần đầu

@@ -7,7 +7,6 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-blue?logo=windows)](https://www.microsoft.com/windows)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-yellow?logo=python)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![Language](https://img.shields.io/badge/Language-VI%20%7C%20EN-orange)](#)
 
 *A lightweight Windows cleanup & optimization toolkit — no third-party software required*
 
@@ -15,13 +14,13 @@
 
 ---
 
-## 📋 Mục lục / Table of Contents
+## 📋 Mục lục
 
 - [Tổng quan](#-tổng-quan)
 - [Yêu cầu hệ thống](#-yêu-cầu-hệ-thống)
+- [Cấu trúc dự án](#-cấu-trúc-dự-án)
 - [Danh sách công cụ](#-danh-sách-công-cụ)
 - [Cách dùng nhanh](#-cách-dùng-nhanh)
-- [Câu hỏi thường gặp](#-câu-hỏi-thường-gặp)
 - [Lưu ý an toàn](#️-lưu-ý-an-toàn)
 
 ---
@@ -30,12 +29,13 @@
 
 **WinBroom** là bộ công cụ nhẹ, không cài đặt, chạy trực tiếp bằng file `.bat` và Python để:
 
-- 📊 **Phân tích** dung lượng ổ đĩa — tìm ra file/thư mục nặng nhất
+- 📊 **Phân tích** dung lượng ổ đĩa — tìm file/thư mục nặng nhất
 - 🗑️ **Dọn rác** an toàn — Temp, npm cache, cache dev tools
-- 🐳 **Tối ưu Docker** — nén VHDX để lấy lại dung lượng trống
-- 🌐 **Phân tích Chrome** — xem & xóa profile không dùng một cách an toàn
+- 🌐 **Phân tích Chrome** — xem account & dung lượng từng profile, xóa an toàn
+- 🐳 **Tối ưu Docker** — nén VHDX lấy lại dung lượng mà không mất image
+- ❌ **Tắt Chrome** — kill toàn bộ tiến trình nền Chrome ngay lập tức
 
-> Tất cả công cụ đều **không xóa dữ liệu cá nhân** mà không có xác nhận rõ ràng từ người dùng.
+> Tất cả công cụ đều **không xóa dữ liệu cá nhân** mà không có xác nhận rõ ràng.
 
 ---
 
@@ -44,66 +44,87 @@
 | Yêu cầu | Chi tiết |
 |---|---|
 | Hệ điều hành | Windows 10 / 11 (64-bit) |
-| Python | 3.8 trở lên — [tải tại python.org](https://python.org) hoặc Microsoft Store |
-| Thư viện Python | **Không cần** — chỉ dùng thư viện chuẩn |
-| Quyền hạn | Một số tool cần **Run as Administrator** (có ghi chú rõ) |
+| Python | 3.8+ — [tải tại python.org](https://python.org) hoặc Microsoft Store |
+| Thư viện ngoài | **Không cần** — chỉ dùng thư viện chuẩn |
+| Quyền hạn | Một số tool cần **Run as Administrator** (ghi chú rõ bên dưới) |
+
+---
+
+## 📁 Cấu trúc dự án
+
+```
+WinBroom/
+├── DonRacAnToan.bat        # Dọn Temp, npm cache, dev cache
+├── NenDockerVHDX.bat       # Nén VHDX Docker (cần Admin)
+├── PhanTichChrome.bat      # Phân tích & dọn Chrome profiles
+├── QuetDungLuong.bat       # Quét & phân tích dung lượng ổ đĩa
+├── TatChrome.bat           # Tắt toàn bộ tiến trình Chrome
+│
+├── src/                    # Mã nguồn Python & PowerShell
+│   ├── disk_analyzer.py
+│   ├── NenDockerVHDX.ps1
+│   └── PhanTichChrome.py
+│
+├── docs/                   # Tài liệu chi tiết
+│   ├── TOOLS.md
+│   └── CHANGELOG.md
+│
+├── README.md
+├── LICENSE
+└── .gitignore
+```
+
+> **Cách dùng:** Double-click file `.bat` tương ứng — các file trong `src/` và `docs/` không cần mở trực tiếp.
 
 ---
 
 ## 🧰 Danh sách công cụ
 
-| File | Mô tả ngắn | Cần Admin? |
+| File | Mô tả | Cần Admin? |
 |---|---|---|
-| 🔍 [`QuetDungLuong.bat`](QuetDungLuong.bat) | Quét & phân tích dung lượng toàn bộ ổ đĩa | Không bắt buộc |
-| 🗑️ [`DonRacAnToan.bat`](DonRacAnToan.bat) | Xóa Temp, npm cache, .cache, installer cũ | Không |
-| 🐳 [`NenDockerVHDX.bat`](NenDockerVHDX.bat) | Nén file VHDX của Docker để lấy lại dung lượng | **Có** |
-| 🌐 [`PhanTichChrome.bat`](PhanTichChrome.bat) | Phân tích Chrome profiles — xem account & dung lượng | Không |
+| 🔍 [`QuetDungLuong.bat`](QuetDungLuong.bat) | Quét ổ đĩa, xuất báo cáo HTML dashboard | Không bắt buộc |
+| 🗑️ [`DonRacAnToan.bat`](DonRacAnToan.bat) | Xóa Temp, npm cache, dev cache tự động | Không |
+| ❌ [`TatChrome.bat`](TatChrome.bat) | Kill toàn bộ tiến trình Chrome chạy ngầm | Không |
+| 🌐 [`PhanTichChrome.bat`](PhanTichChrome.bat) | Xem account/dung lượng Chrome profiles, xóa có xác nhận | Không |
+| 🐳 [`NenDockerVHDX.bat`](NenDockerVHDX.bat) | Nén VHDX Docker để lấy lại dung lượng | **Có** |
 
-> Chi tiết từng công cụ xem tại [`TOOLS.md`](TOOLS.md)
+📖 Chi tiết từng công cụ: [`docs/TOOLS.md`](docs/TOOLS.md)
 
 ---
 
 ## ⚡ Cách dùng nhanh
 
-### Bước 1 — Tải về
-```
-# Clone repo
+**Bước 1 — Tải về:**
+```bash
 git clone https://github.com/<your-username>/winbroom.git
-
-# Hoặc tải ZIP rồi giải nén vào Desktop
 ```
+Hoặc tải ZIP → giải nén vào Desktop.
 
-### Bước 2 — Chạy công cụ muốn dùng
-**Cách đơn giản nhất:** Double-click vào file `.bat` tương ứng.
+**Bước 2 — Chạy tool:**
+- **Thông thường:** Double-click file `.bat`
+- **Cần Admin:** Chuột phải → **"Run as administrator"**
 
-**Cần Admin:** Chuột phải vào file `.bat` → chọn **"Run as administrator"**
-
-> ⚠️ Xem [`TOOLS.md`](TOOLS.md) để biết tool nào cần quyền Admin trước khi chạy.
-
----
-
-## ❓ Câu hỏi thường gặp
-
-**Q: Python không tìm thấy / lỗi "python is not recognized"?**  
-A: Cài Python từ [python.org](https://python.org) và nhớ tick ✅ **"Add Python to PATH"** lúc cài.
-
-**Q: Các file `.bat` có an toàn không?**  
-A: Mã nguồn hoàn toàn mở — bạn có thể click chuột phải → Edit để đọc từng dòng lệnh trước khi chạy.
-
-**Q: Chạy xong máy có cần restart không?**  
-A: Thường thì không. Riêng `NenDockerVHDX.bat` cần tắt Docker Desktop trước khi chạy.
+**Gợi ý thứ tự dọn dẹp lần đầu:**
+```
+1. QuetDungLuong.bat   → Xem máy đang dùng bao nhiêu GB ở đâu
+2. DonRacAnToan.bat    → Dọn rác tự động trước
+3. TatChrome.bat       → Tắt Chrome nền (nếu cần phân tích profile)
+4. PhanTichChrome.bat  → Xem & xóa Chrome profile không dùng
+5. NenDockerVHDX.bat   → Nén Docker nếu đã xóa image (cần Admin)
+```
 
 ---
 
 ## 🛡️ Lưu ý an toàn
 
-- ✅ Không có tool nào tự động xóa file mà **không hỏi xác nhận** (trừ `DonRacAnToan.bat` — nhưng chỉ xóa file rác hệ thống đã được kiểm chứng an toàn)
 - ✅ Không kết nối internet, không thu thập dữ liệu
 - ✅ Không chỉnh sửa Registry hay cài dịch vụ nền
-- ❌ **Không chỉnh sửa script** nếu bạn không chắc về lệnh đang thêm vào
+- ✅ Mã nguồn mở — đọc từng dòng lệnh bằng cách chuột phải → Edit
+- ⚠️ `DonRacAnToan.bat` xóa tự động (không hỏi) — chỉ nhắm vào file rác hệ thống đã kiểm chứng
+- ⚠️ `TatChrome.bat` đóng toàn bộ Chrome — download dang dở sẽ bị ngắt
 
 ---
 
 ## 📄 License
 
-MIT License — xem [`LICENSE`](LICENSE)
+[MIT License](LICENSE)

@@ -8,7 +8,11 @@ $ErrorActionPreference = "Continue"
 $vhdxPath = "$env:LOCALAPPDATA\Docker\wsl\disk\docker_data.vhdx"
 
 function Write-Color($text, $color = "White") {
-    Write-Host $text -ForegroundColor $color
+    if ([string]::IsNullOrEmpty($color)) {
+        Write-Host $text
+    } else {
+        Write-Host $text -ForegroundColor $color
+    }
 }
 
 Write-Color "=================================================================" "Cyan"

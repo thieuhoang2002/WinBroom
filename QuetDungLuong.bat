@@ -7,7 +7,7 @@ echo          CONG CU QUET DUNG LUONG O DIA (DISK ANALYZER VIP PRO)
 echo =====================================================================
 echo.
 
-python "%~dp0disk_analyzer.py"
+python "%~dp0src\disk_analyzer.py"
 
 if %errorlevel% neq 0 (
     echo.

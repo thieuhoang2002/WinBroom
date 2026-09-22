@@ -1,6 +1,8 @@
 # 🔧 Hướng Dẫn Chi Tiết Từng Công Cụ
 
 > Đọc tài liệu này trước khi chạy để biết chính xác công cụ làm gì và cần chuẩn bị gì.
+>
+> 📁 File nguồn Python/PowerShell nằm trong thư mục `src/` — không cần mở trực tiếp.
 
 ---
 
@@ -8,8 +10,9 @@
 
 1. [QuetDungLuong — Phân tích dung lượng ổ đĩa](#1--quetdungluong--phân-tích-dung-lượng-ổ-đĩa)
 2. [DonRacAnToan — Dọn file rác an toàn](#2--donracantoan--dọn-file-rác-an-toàn)
-3. [NenDockerVHDX — Nén ổ đĩa ảo Docker](#3--nendockervhdx--nén-ổ-đĩa-ảo-docker)
+3. [TatChrome — Tắt Chrome toàn bộ](#3--tatchrome--tắt-chrome-toàn-bộ)
 4. [PhanTichChrome — Phân tích Chrome Profiles](#4--phantichchrome--phân-tích-chrome-profiles)
+5. [NenDockerVHDX — Nén ổ đĩa ảo Docker](#5--nendockervhdx--nén-ổ-đĩa-ảo-docker)
 
 ---
 
@@ -89,9 +92,35 @@ Không cần Admin. Script sẽ in `OK` hoặc `SKIP` cho từng mục (SKIP ngh
 
 ---
 
-## 3. 🐳 NenDockerVHDX — Nén ổ đĩa ảo Docker
+## 3. ❌ TatChrome — Tắt Chrome toàn bộ
 
-**Files:** `NenDockerVHDX.bat` + `NenDockerVHDX.ps1`
+**File:** `TatChrome.bat`
+
+### Vấn đề cần giải quyết
+
+Khi bạn click X để đóng cửa sổ Chrome, Chrome **không thực sự tắt hoàn toàn**. Nó giữ nhiều tiến trình con chạy ngầm (renderer, GPU, extension...) để lần sau khởi động nhanh hơn. Điều này:
+- Chiếm RAM không cần thiết
+- Khóa các file trong thư mục Chrome User Data → **không xóa được profile** khi dùng `PhanTichChrome.bat`
+
+### Làm gì?
+Dùng `taskkill /F /IM chrome.exe` để kill toàn bộ tiến trình Chrome, hiển thị số lượng tiến trình đã tắt.
+
+### Cách chạy
+
+```
+Double-click TatChrome.bat
+```
+
+### Lưu ý
+- Download đang chạy dở sẽ bị ngắt — kiểm tra trước khi chạy
+- Chrome tự khôi phục các tab khi mở lại (session restore)
+- **Chạy trước `PhanTichChrome.bat`** để tránh lỗi file bị khóa
+
+---
+
+## 4. 🌐 PhanTichChrome — Phân tích Chrome Profiles
+
+**Files:** `PhanTichChrome.bat` + `src/PhanTichChrome.py`
 
 ### Vấn đề cần giải quyết
 

@@ -17,7 +17,7 @@ echo     NEN DOCKER VHDX - GIU LAI IMAGE, GIAI PHONG DUNG LUONG TRONG
 echo =====================================================================
 echo.
 
-powershell -ExecutionPolicy Bypass -File "%~dp0NenDockerVHDX.ps1"
+powershell -ExecutionPolicy Bypass -File "%~dp0src\NenDockerVHDX.ps1"
 
 echo.
 pause
