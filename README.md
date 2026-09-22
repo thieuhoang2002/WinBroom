@@ -85,6 +85,7 @@ WinBroom/
 | 🔍 [`QuetDungLuong.bat`](QuetDungLuong.bat) | Quét ổ đĩa, xuất báo cáo HTML dashboard | Không bắt buộc |
 | 🗑️ [`DonRacAnToan.bat`](DonRacAnToan.bat) | Xóa Temp, npm cache, dev cache tự động | Không |
 | ❌ [`TatChrome.bat`](TatChrome.bat) | Kill toàn bộ tiến trình Chrome chạy ngầm | Không |
+| 🧹 [`XoaCacheChrome.bat`](XoaCacheChrome.bat) | Xóa cache Chrome — giữ nguyên tài khoản, mật khẩu, bookmark | Không |
 | 🌐 [`PhanTichChrome.bat`](PhanTichChrome.bat) | Xem account/dung lượng Chrome profiles, xóa có xác nhận | Không |
 | 🐳 [`NenDockerVHDX.bat`](NenDockerVHDX.bat) | Nén VHDX Docker để lấy lại dung lượng | **Có** |
 
@@ -106,11 +107,12 @@ Hoặc tải ZIP → giải nén vào Desktop.
 
 **Gợi ý thứ tự dọn dẹp lần đầu:**
 ```
-1. QuetDungLuong.bat   → Xem máy đang dùng bao nhiêu GB ở đâu
-2. DonRacAnToan.bat    → Dọn rác tự động trước
-3. TatChrome.bat       → Tắt Chrome nền (nếu cần phân tích profile)
-4. PhanTichChrome.bat  → Xem & xóa Chrome profile không dùng
-5. NenDockerVHDX.bat   → Nén Docker nếu đã xóa image (cần Admin)
+1. QuetDungLuong.bat    → Xem máy đang dùng bao nhiêu GB ở đâu
+2. DonRacAnToan.bat     → Dọn rác tự động trước
+3. TatChrome.bat        → Tắt Chrome nền
+4. XoaCacheChrome.bat   → Xóa cache Chrome (giữ nguyên tài khoản)
+5. PhanTichChrome.bat   → Xem & xóa Chrome profile không dùng
+6. NenDockerVHDX.bat    → Nén Docker nếu đã xóa image (cần Admin)
 ```
 
 ---

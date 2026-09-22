@@ -4,7 +4,22 @@ Tất cả thay đổi đáng chú ý của dự án WinBroom được ghi lại
 
 ---
 
-## [1.1.0] — 2026-09-22
+## [1.2.0] — 2026-09-22
+
+### ✨ Thêm mới
+- **`XoaCacheChrome.bat`** — Xóa Cache, Code Cache, GPUCache, ShaderCache của toàn bộ Chrome profile
+  - Kiểm tra Chrome đang chạy trước khi thực thi, yêu cầu dùng `TatChrome.bat` nếu cần
+  - Có xác nhận Y/N trước khi xóa
+  - Giữ nguyên tài khoản, mật khẩu, bookmark, cookie, extension
+  - Ước tính tiết kiệm 1–4 GB
+
+### 📖 Tài liệu
+- Cập nhật `docs/TOOLS.md`: thêm section đầy đủ cho `XoaCacheChrome.bat`
+- Cập nhật `README.md`: thêm vào bảng công cụ và thứ tự gợi ý dọn dẹp
+
+---
+
+
 
 ### ✨ Thêm mới
 - **`TatChrome.bat`** — Tắt toàn bộ tiến trình Chrome chạy ngầm bằng `taskkill`, hiển thị số tiến trình đã kill

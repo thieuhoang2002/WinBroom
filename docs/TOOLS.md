@@ -118,7 +118,44 @@ Double-click TatChrome.bat
 
 ---
 
-## 4. 🌐 PhanTichChrome — Phân tích Chrome Profiles
+## 4. 🧹 XoaCacheChrome — Xóa cache Chrome
+
+**File:** `XoaCacheChrome.bat`
+
+### Làm gì?
+Xóa các thư mục cache tạm thời bên trong **từng Chrome profile** để giải phóng dung lượng — **không đụng đến dữ liệu quan trọng**:
+
+| Thư mục bị xóa | Chứa gì | Xóa thì sao |
+|---|---|---|
+| `Cache` | Ảnh, JS, CSS các trang đã truy cập | Chrome tải lại từ internet |
+| `Code Cache` | JavaScript đã compile sẵn | Chrome compile lại — chậm hơn vài giây |
+| `GPUCache` | Shader đồ họa đã render | Chrome render lại — không nhận ra được |
+| `ShaderCache` | Cache WebGL/GPU | Chrome tạo lại tự động |
+
+**Tuyệt đối giữ nguyên:**
+- ✅ Tài khoản Google đang đăng nhập
+- ✅ Mật khẩu đã lưu
+- ✅ Bookmark và tab đã pin
+- ✅ Cookie (các trang vẫn giữ đăng nhập)
+- ✅ Extension và cài đặt
+
+### Cách chạy
+
+```
+Bước 1: Chạy TatChrome.bat để tắt Chrome hoàn toàn
+Bước 2: Double-click XoaCacheChrome.bat
+Bước 3: Nhập Y để xác nhận
+```
+
+> ⚠️ Script tự kiểm tra Chrome có đang chạy không — nếu có sẽ từ chối chạy và nhắc bạn dùng `TatChrome.bat` trước.
+
+### Lưu ý
+- Ước tính tiết kiệm: **1–4 GB** tùy thời gian dùng Chrome
+- Vài ngày đầu sau khi xóa, trang web có thể load chậm hơn một chút (Chrome đang tái tạo cache)
+
+---
+
+## 5. 🌐 PhanTichChrome — Phân tích Chrome Profiles
 
 **Files:** `PhanTichChrome.bat` + `src/PhanTichChrome.py`
 
