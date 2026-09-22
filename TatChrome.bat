@@ -17,6 +17,18 @@ if "%COUNT%"=="0" (
 
 echo [INFO] Phat hien %COUNT% tien trinh Chrome dang chay ngam.
 echo.
+echo [?] Ban co muon tat toan bo %COUNT% tien trinh Chrome khong?
+echo     Luu y: Download dang chay do se bi ngat.
+echo.
+set /p CONFIRM=    Nhap Y de xac nhan, N de huy: 
+
+if /i not "%CONFIRM%"=="Y" (
+    echo.
+    echo [HUY] Khong thay doi gi. Chrome van dang chay.
+    goto END
+)
+
+echo.
 
 :: Kill toan bo chrome.exe
 taskkill /F /IM chrome.exe >nul 2>&1
