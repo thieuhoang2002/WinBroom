@@ -1,0 +1,26 @@
+# Các file/thư mục được tạo ra khi chạy công cụ — không cần push lên GitHub
+
+# Báo cáo HTML sinh ra sau khi quét
+BaoCao_DungLuong.html
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# File diskpart tạm thời
+docker_compact_diskpart.txt
+
+# Log files
+*.log
+
+# File hệ thống Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
